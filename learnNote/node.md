@@ -374,8 +374,8 @@ With more than one FILE, precede each with a header giving the file name.
                              least once every N seconds
   -v, --verbose            always output headers giving file names
   -z, --zero-terminated    以 NUL 字符而非换行符作为行尾分隔符
-      --help		显示此帮助信息并退出
-      --version		显示版本信息并退出
+      --help               显示此帮助信息并退出
+      --version            显示版本信息并退出
 
 NUM may have a multiplier suffix:
 b 512, kB 1000, K 1024, MB 1000*1000, M 1024*1024,
@@ -390,3 +390,4 @@ GNU coreutils 在线帮助：<https://www.gnu.org/software/coreutils/>
 完整文档请见：<https://www.gnu.org/software/coreutils/tail>
 或者在本地使用：info '(coreutils) tail invocation'
 ```
+

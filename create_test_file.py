@@ -3,13 +3,13 @@
 import os
 import shutil
 
-
 CHECK_DIR = '/home/guoxy/work/hwcap'
 WORK_DIR = CHECK_DIR + '_img'
 if os.path.exists(CHECK_DIR):
     shutil.rmtree(CHECK_DIR)
 if os.path.exists(WORK_DIR):
     shutil.rmtree(WORK_DIR)
+
 
 def check_folder(folder):
     if not os.path.exists(folder):
@@ -31,9 +31,8 @@ for i in range(1, 10):
                 check_folder(file)
                 dir4 = file
                 for i in range(3, 15):
-                    filen = '%s/camere_hkeied_sdkjf%05d.h265' %(dir4, i)
+                    filen = '%s/camere_hkeied_sdkjf%05d.h265' % (dir4, i)
                     check_folder(filen)
-
 
 for i in range(1, 10):
     check_folder(CHECK_DIR)
