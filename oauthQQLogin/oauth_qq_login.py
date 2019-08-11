@@ -3,11 +3,8 @@ import re
 from urllib.parse import parse_qsl, urlencode
 from urllib.request import urlopen
 
-from dotenv import load_dotenv
 from flask import Flask, redirect, url_for, request, jsonify, json, session
 from werkzeug.security import gen_salt
-
-load_dotenv('.env')
 
 app = Flask(__name__)
 
@@ -143,4 +140,4 @@ def get_qq_user_info():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='8000', debug=True)
+    app.run(host='0.0.0.0', port=8000)
