@@ -26,6 +26,7 @@ def index():
     return '<h1>QQ登陆测试</h1><a href="%s">qq登陆</a>' % url_for('oauth_qq_login')
 
 
+# 访问扫马登陆页
 @app.route('/login/qq')
 def oauth_qq_login():
     redirect_uri = url_for('oauth_qq_callback', _external=True)
@@ -44,18 +45,18 @@ def oauth_qq_login():
     return redirect(url)
 
 
-# TODO 更改回调地址.
+# 登陆qq后的回调页 TODO 更改回调地址.
 @app.route('/callback/qq')
 def oauth_qq_callback():
     redirect_uri = url_for('oauth_qq_callback', _external=True)
     code = request.args.get('code')
     state = request.args.get('state')
 
-    # TODO 这里校验state
+    # 这里校验state
     global current_state
     state_check = (state == current_state)
-    #####################################
 
+    # 发送获取access_token的请求
     access_token_params = {
         'grant_type': 'authorization_code',
         'client_id': client_id,
@@ -77,7 +78,7 @@ def oauth_qq_callback():
     refresh_token = resp_data.get('refresh_token')
 
     # TODO 这里存储access_token, expires_in, refresh_token
-
+    # 发送获取open_id的请求
     open_id_params = {
         'access_token': access_token
     }
@@ -102,7 +103,7 @@ def oauth_qq_callback():
     return jsonify(expires_in=expires_in, refresh_token=refresh_token, state_check=state_check, openid=openid,
                    client_id=client_id_, access_token=access_token)
 
-
+# 重新获取access_token
 @app.route('/ref_token')
 def refresh():
     params = {
@@ -125,7 +126,7 @@ def refresh():
     refresh_token = resp_data.get('refresh_token')
     return jsonify(access_token=access_token, expires_in=expires_in, refresh_token=refresh_token)
 
-
+# 调用QQ的api
 @app.route('/info')
 def get_qq_user_info():
     params = {
